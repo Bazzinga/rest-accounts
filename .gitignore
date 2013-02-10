@@ -1,0 +1,7 @@
+*.pyc
+.Python
+*.swp
+
+bin/
+include/
+lib/
