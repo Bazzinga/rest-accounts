@@ -3,6 +3,8 @@ from accounts import models
 
 
 class AccountSerializer(serializers.ModelSerializer):
+    hotels = serializers.ManyPrimaryKeyRelatedField()
+
     class Meta:
         model = models.Account
         fields = (
@@ -14,4 +16,17 @@ class AccountSerializer(serializers.ModelSerializer):
             'city',
             'country',
             'biography',
+            'hotels',
+        )
+
+
+class HotelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Hotel
+        fields = (
+            'name',
+            'city',
+            'country',
+            'description',
+            'agent',
         )

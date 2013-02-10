@@ -3,9 +3,10 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
 
-from accounts.models import Account
-from accounts.serializers import AccountSerializer
+from accounts.models import Account, Hotel
+from accounts.serializers import AccountSerializer, HotelSerializer
 
 
 class AccountList(APIView):
@@ -46,3 +47,14 @@ class AccountDetail(APIView):
         account = get_object_or_404(Account, pk=pk)
         account.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# The next classes are written via generic class based views.
+class HotelList(generics.ListAPIView):
+    model = Hotel
+    serializer_class = HotelSerializer
+
+
+class HotelInstance(generics.RetrieveAPIView):
+    model = Hotel
+    serializer_class = HotelSerializer
