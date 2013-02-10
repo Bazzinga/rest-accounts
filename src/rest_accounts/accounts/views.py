@@ -9,7 +9,7 @@ from accounts.serializers import AccountSerializer
 
 
 @api_view(['GET', 'POST'])
-def account_list(request):
+def account_list(request, format=None):
     """
     List all accounts or create a new account.
     """
@@ -27,7 +27,7 @@ def account_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def account_detail(request, pk):
+def account_detail(request, pk, format=None):
     """
     Retrieve, update or delete an existent account.
     """
