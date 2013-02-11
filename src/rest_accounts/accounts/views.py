@@ -55,7 +55,7 @@ class AccountDetail(APIView):
 
 
 # The next classes are written via generic class based views.
-class HotelList(generics.ListAPIView):
+class HotelList(generics.ListCreateAPIView):
     model = Hotel
     serializer_class = HotelSerializer
 
