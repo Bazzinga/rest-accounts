@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from rest_framework import permissions
 
 from accounts.models import Account, Hotel
 from accounts.serializers import AccountSerializer, HotelSerializer
@@ -13,6 +14,8 @@ class AccountList(APIView):
     """
     List all accounts or create a new account.
     """
+    permission_classes = (permissions.IsAuthenticated,)
+
     def get(self, request, format=None):
         accounts = Account.objects.all()
         serializer = AccountSerializer(accounts)
@@ -30,6 +33,8 @@ class AccountDetail(APIView):
     """
     Retrieve, update or delete an account instance.
     """
+    permission_classes = (permissions.IsAuthenticated,)
+
     def get(self, request, pk, format=None):
         account = get_object_or_404(Account, pk=pk)
         serializer = AccountSerializer(account)
