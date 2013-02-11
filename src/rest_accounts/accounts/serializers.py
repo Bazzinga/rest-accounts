@@ -21,6 +21,8 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class HotelSerializer(serializers.ModelSerializer):
+    agent = serializers.Field(source='agent.username')
+
     class Meta:
         model = models.Hotel
         fields = (

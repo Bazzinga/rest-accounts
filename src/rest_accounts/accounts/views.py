@@ -54,7 +54,13 @@ class HotelList(generics.ListAPIView):
     model = Hotel
     serializer_class = HotelSerializer
 
+    def pre_save(self, obj):
+        obj.agent = self.request.user
+
 
 class HotelInstance(generics.RetrieveAPIView):
     model = Hotel
     serializer_class = HotelSerializer
+
+    def pre_save(self, obj):
+        obj.agent = self.request.user
